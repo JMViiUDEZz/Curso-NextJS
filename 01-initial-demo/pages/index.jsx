@@ -12,6 +12,9 @@ export default function HomePage() {
       </Head>
 
       <main className={styles.main}>
+
+        <h1>Home Page</h1>
+        
         <h1 className={styles.title}>
           {/* Ir a <a href="/about">About!</a> */}
           Ir a <Link href="/about">About</Link>
