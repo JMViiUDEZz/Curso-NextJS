@@ -1,14 +1,14 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
-import { Navbar } from '../components/Navbar'
+import { Navbar } from '../../components/Navbar'
 
-export default function HomePage() {
+export default function ContactPage() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Home - Jose</title>
-        <meta name="description" content="Home Page" />
+        <title>Contact - Jose</title>
+        <meta name="description" content="Contact Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -16,16 +16,15 @@ export default function HomePage() {
 
       <main className={styles.main}>
 
-        <h1>Home Page</h1>
+        <h1>Contact Page</h1>
         
         <h1 className={styles.title}>
-          {/* Ir a <a href="/about">About!</a> */}
-          Ir a <Link href="/about">About</Link>
+          Ir a <Link href="/">Home</Link>
         </h1>
 
         <p className={styles.description}>
           Editar{' '}
-          <code className={styles.code}>pages/index.js</code>
+          <code className={styles.code}>pages/contact.js</code>
         </p>
 
       </main>
