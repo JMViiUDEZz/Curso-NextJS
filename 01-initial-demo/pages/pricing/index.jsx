@@ -4,18 +4,18 @@ import Link from 'next/link'
 import { MainLayout } from '../../components/layouts/MainLayout'
 //import { Navbar } from '../../components/Navbar'
 
-export default function ContactPage() {
+export default function PricingPage() {
   return (
     <MainLayout>
-      <h1>Contact Page</h1>
+      <h1>Pricing Page</h1>
         
         <h1 className={"title"}>
-          Ir a <Link href="/pricing">Pricing</Link>
+          Ir a <Link href="/contact">Contact</Link>
         </h1>
 
         <p className={"description"}>
           Editar{' '}
-          <code className={"code"}>pages/contact/index.js</code>
+          <code className={"code"}>pages/pricing/index.js</code>
         </p>
     </MainLayout>
   )
