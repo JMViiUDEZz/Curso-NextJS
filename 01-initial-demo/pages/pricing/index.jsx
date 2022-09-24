@@ -10,7 +10,7 @@ export default function PricingPage() {
       <h1>Pricing Page</h1>
         
         <h1 className={"title"}>
-          Ir a <Link href="/contact">Contact</Link>
+          Ir a <Link href="/contact">Contact!</Link>
         </h1>
 
         <p className={"description"}>
