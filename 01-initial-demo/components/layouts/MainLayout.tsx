@@ -1,15 +1,16 @@
 // import { FC } from "react"
 // Cuando definimos los CHILDREN se definia con los FC de react, pero en la nueva versión de REACT 18 esto se sacó y según la documentación se soluciona de la siguiente manera:
-import React, { PropsWithChildren } from 'react';
+import * as React from 'react';
 
-type Props = {};
-
+type Props = {
+  children?: React.ReactNode
+};
 import Head from 'next/head';
 
 import { Navbar } from '../Navbar';
 import styles from './MainLayout.module.css';
 
-export const MainLayout: React.FC<PropsWithChildren<Props>> = ({ children }) => {
+export const MainLayout: React.FC<Props> = ({ children }) => {
     return (
         <div className={styles.container}>
 
