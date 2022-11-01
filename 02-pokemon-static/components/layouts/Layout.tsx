@@ -4,7 +4,7 @@ import React, { FC } from 'react' //1.React
 import Head from 'next/head' //2.Next
 
 //toma el archivo barril index.ts
-// import { Navbar } from '../ui'; //3.Terceros
+import { Navbar } from '../ui'; //3.Terceros
 
 //4.Nuestras
 
@@ -32,9 +32,11 @@ export const Layout: FC<Props> = ({ children, title }) => {
 
         </Head>
       
-        {/* <Navbar /> */}
+        <Navbar />
 
-        <main>
+        <main style={{
+          padding: '0px 20px'
+        }}>
             { children }
         </main>
       

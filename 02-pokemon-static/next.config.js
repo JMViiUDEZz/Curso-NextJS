@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['raw.githubusercontent.com'] //array de todos los dominios donde podamos tomar imagenes
+  }
 }
 
 module.exports = nextConfig
