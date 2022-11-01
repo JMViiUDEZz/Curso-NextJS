@@ -1,0 +1,2 @@
+Si el archivo contiene codigo de React (JSX, FC) --> extension acabada en x (*.jsx, *.tsx)
+Por el contrario, será un archivo con extension *.js, *.ts
