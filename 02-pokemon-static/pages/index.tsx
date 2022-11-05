@@ -1,26 +1,28 @@
 import { NextPage, GetStaticProps } from 'next';
 import { pokeApi } from '../api';
 import { Layout } from '../components/layouts';
-import { PokemonListResponse } from '../interfaces';
+import { PokemonListResponse, SmallPokemon } from '../interfaces';
+import { name } from '../../../Nest/01-intro/src/bases/01-tipos';
 
+interface Props {
+  pokemons: SmallPokemon[];
+}
 
-const HomePage: NextPage = ( props ) => {
+const HomePage: NextPage<Props> = ({ pokemons }) => {
 
-  console.log({props});
+  console.log(pokemons);
 
   return (
     <Layout title='Listado de Pokemons'>
       
       <ul>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
-        <li>Pokemon</li>
+        {
+          pokemons.map( ({ id, name }) => ( //llamamos al array de pokemons y desestructuramos el id y el nombre
+          <li key={ id }>
+            #{ id } - { name }
+          </li>
+          ))        
+        } 
       </ul>
 
     </Layout>
@@ -43,9 +45,15 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   console.log(data);
 
+  const pokemons: SmallPokemon[] = data.results.map( (poke, i) => ({ //metodo( (nombre:poke, indice:i --> empieza en 0))
+    ...poke, //propiedades de poke
+    id: i + 1, //id pokemon --> indice + 1
+    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${ i + 1 }.svg` //img pokemon --> interpolacion de string: ${ i + 1 }
+  }) )
+
   return {
     props: { // will be passed to the page component as props (propiedades)
-      pokemons: data.results
+      pokemons //cuando una propiedad tiene el mismo nombre que una variable (en este caso, un array) -->  pokemons: pokemons, se puede dejar de la siguiente manera: pokemons
     }
   }
 }
