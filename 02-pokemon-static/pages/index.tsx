@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151'); //almacenamos en la variable la peticion get con los 151 pokemons habiendo desestructurado la data
 
-  console.log(data);
+  // console.log(data);
 
   const pokemons: SmallPokemon[] = data.results.map( (poke, i) => ({ //metodo( (nombre:poke, indice:i --> empieza en 0))
     ...poke, //propiedades de poke

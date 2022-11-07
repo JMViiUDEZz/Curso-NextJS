@@ -1,4 +1,4 @@
-// import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
+import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
 // import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 
 // import { pokeApi } from '../../api';
@@ -6,12 +6,14 @@ import { Layout } from '../../components/layouts';
 // import { Pokemon } from '../../interfaces';
 import { useRouter } from 'next/router';
 
-// interface Props {
+interface Props {
+    id: string;
+    name: string;
 //   pokemon: Pokemon;
-// }
+}
 
 
-const PokemonPage = () => {
+const PokemonPage: NextPage<Props> = () => {
 
     const router = useRouter();
     console.log(router.query);
@@ -95,29 +97,36 @@ const PokemonPage = () => {
 
 // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
 
-// export const getStaticPaths: GetStaticPaths = async (ctx) => {
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 //   const pokemons151 = [...Array(151)].map( ( value, index ) => `${ index + 1 }` );
 
-//   return {
-//     paths: pokemons151.map( id => ({
-//       params: { id }
-//     })),
-//     fallback: false
-//   }
-// }
+  return {
+    paths: [
+        {
+            params: { id: '1'}
+        },
+    ],
+    // pokemons151.map( id => ({
+    //   params: { id }
+    // })),
+    fallback: false //si el url de la pagina no existe o pasa un id que no esté definido, dara un error 404
+  }
+}
 
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   
 //   const { id } = params as { id: string };
   
 //   const { data } = await pokeApi.get<Pokemon>(`/pokemon/${ id }`);
 
-//   return {
-//     props: {
-//       pokemon: data
-//     }
-//   }
-// }
+  return {
+    props: {
+        id: 1,
+        name: 'Bulbasaur'
+    //   pokemon: data
+    }
+  }
+}
 
 export default PokemonPage;
