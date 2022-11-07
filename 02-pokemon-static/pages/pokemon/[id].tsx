@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
-// import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
+import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 
 import { pokeApi } from '../../api';
 import { Layout } from '../../components/layouts';
@@ -21,8 +21,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
     return (
         <Layout title='Algun pokémon'>
            
-           <h1>{ pokemon.name }</h1>
-           {/* <Grid.Container css={{ marginTop: '5px' }} gap={ 2 }>
+           <Grid.Container css={{ marginTop: '5px' }} gap={ 2 }>
               <Grid xs={ 12 } sm={ 4 } >
                 <Card hoverable css={{ padding: '30px' }}>
                     <Card.Body>
@@ -87,7 +86,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                 </Card>
               </Grid>
 
-           </Grid.Container> */}
+           </Grid.Container>
 
         </Layout>
     )
