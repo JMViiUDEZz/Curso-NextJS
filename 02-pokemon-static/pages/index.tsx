@@ -39,7 +39,7 @@ const HomePage: NextPage<Props> = ({ pokemons }) => {
 //- The data comes from a headless CMS.
 //- The data can be publicly cached (not user-specific).
 //- The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance.
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => { //StaticProps: propiedades estaticas generadas en la construccion(yarn build) de la api en el lado del servidor
   
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151'); //almacenamos en la variable la peticion get con los 151 pokemons habiendo desestructurado la data
 
