@@ -1,29 +1,27 @@
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
 // import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 
-// import { pokeApi } from '../../api';
+import { pokeApi } from '../../api';
 import { Layout } from '../../components/layouts';
-// import { Pokemon } from '../../interfaces';
-import { useRouter } from 'next/router';
+import { Pokemon } from '../../interfaces';
+// import { useRouter } from 'next/router';
 
 interface Props {
-    id: string;
-    name: string;
-//   pokemon: Pokemon;
+  pokemon: Pokemon;
 }
 
 
-const PokemonPage: NextPage<Props> = () => {
+const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
-    const router = useRouter();
-    console.log(router.query);
+    // const router = useRouter();
+    // console.log(router.query);
 
-  // console.log(pokemon);
+  console.log(pokemon);
     
     return (
         <Layout title='Algun pokémon'>
            
-           <h1>Hola mundo</h1>
+           <h1>{ pokemon.name }</h1>
            {/* <Grid.Container css={{ marginTop: '5px' }} gap={ 2 }>
               <Grid xs={ 12 } sm={ 4 } >
                 <Card hoverable css={{ padding: '30px' }}>
@@ -99,32 +97,26 @@ const PokemonPage: NextPage<Props> = () => {
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
-//   const pokemons151 = [...Array(151)].map( ( value, index ) => `${ index + 1 }` );
+  const pokemons151 = [...Array(151)].map( ( value, index ) => `${ index + 1 }` ); //recorre un array desestructurado de 151 elementos y toma el value y el index
+  //regresa el index + 1 de tipo string
 
   return {
-    paths: [
-        {
-            params: { id: '1'}
-        },
-    ],
-    // pokemons151.map( id => ({
-    //   params: { id }
-    // })),
+    paths: pokemons151.map( id => ({ //recorre el array definido anteriormente con el id
+      params: { id } //regresa el id de tipo id, pero no se escribe ya que es codigo redundante
+    })),
     fallback: false //si el url de la pagina no existe o pasa un id que no esté definido, dara un error 404
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   
-//   const { id } = params as { id: string };
+  const { id } = params as { id: string }; //desestructuramos el id de tipo string que viene de los params
   
-//   const { data } = await pokeApi.get<Pokemon>(`/pokemon/${ id }`);
+  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${ id }`); //en el lado del servidor en tiempo de build time, generaremos previamente toda la informacion del pokemon
 
   return {
     props: {
-        id: 1,
-        name: 'Bulbasaur'
-    //   pokemon: data
+      pokemon: data
     }
   }
 }
