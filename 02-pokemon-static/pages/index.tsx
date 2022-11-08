@@ -45,14 +45,18 @@ export const getStaticProps: GetStaticProps = async (ctx) => { //StaticProps: pr
 
   // console.log(data);
 
+  //la idea es devolver un array con id, nombre, imagen y url
+  //map regresa un nuevo array con el retorno de la funcion de flecha que hay dentro
+  //({ ... }) --> el () es para hacer implícito el return del objeto que devuelve la función
   const pokemons: SmallPokemon[] = data.results.map( (poke, i) => ({ //metodo( (nombre:poke, indice:i --> empieza en 0))
-    ...poke, //propiedades de poke
+    ...poke, //propiedades de poke --> destructuramos el objeto (name y url)
     id: i + 1, //id pokemon --> indice + 1
     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${ i + 1 }.svg` //img pokemon --> interpolacion de string: ${ i + 1 }
   }) )
 
   return {
     props: { // will be passed to the page component as props (propiedades)
+      // pokemons: data.results //lo que devuelve la API
       pokemons //cuando una propiedad tiene el mismo nombre que una variable (en este caso, un array) -->  pokemons: pokemons, se puede dejar de la siguiente manera: pokemons
     }
   }

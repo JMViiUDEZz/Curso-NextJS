@@ -6,7 +6,7 @@ class MyDocument extends Document {
   
   static async getInitialProps( ctx: DocumentContext) { //ctx (Context): Dentro de este Contexto, tendremos la informacion sobre la request, la response...
   //ademas, podremos manipular la respuesta a nuestro gusto
-    const initialProps = await Document.getInitialProps(ctx)
+    const initialProps = await Document.getInitialProps(ctx) //Run the parent `getInitialProps`, it now includes the custom `renderPage`
     return { 
         ...initialProps,
         styles: <>{initialProps.styles}</>
